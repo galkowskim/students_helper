@@ -1,41 +1,61 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {% if request.user.is_authenticated %}
-        <p>{{ request.user }}</p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-    <h1>My to do list!</h1>
-    <a href="{% url 'task-create' %}">Add task</a>
-    <form method="GET">
-        <input type="text" name="search-area" value="{{ search_input }}">
-        <input type="submit" value="Search">
-    </form>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th></th>
-            <th></th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.title }}</td>
-                <td><a href="{% url 'task' task.id %}">View</a></td>
-                <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-                <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-            </tr>
-            {% empty %}
-            <h3>No items</h3>
+{% extends 'todolist/base.html' %}
+
+{% block content %}
+    <div class="sidepanel">
+        <a href="">
+            <div class="without-project chosen">Tasks without project</div>
+        </a>
+        {% if projects %}
+            <div class="project-div">Projects</div>
+        {% endif %}
+        {% for project in projects %}
+
+            <a href="">
+                <div class="project-wrapper">
+                    {{ project.title }}
+                </div>
+            </a>
+        {% empty %}
+            <span>You haven't created any projects yet!</span>
         {% endfor %}
-    </table>
-</body>
-</html>
+    </div>
+    <div class="page-wrapper">
+        <header>
+            <h1>ToDoList</h1>
+            <div class="user-info">
+                {% if request.user.is_authenticated %}
+                    <div><p>{{ request.user }}</p></div>
+                    <div><a href="{% url 'base:logout' %}">Logout</a></div>
+                {% else %}
+                    <a href="{% url 'base:login' %}">Login</a>
+                {% endif %}
+            </div>
+        </header>
+        <div class="creation-wrapper">
+            <a href="{% url 'todolist:task-create' %}">
+                <div class="creation-elems">Add task</div>
+            </a>
+            <a href="{% url 'todolist:project-create' %}">
+                <div class="creation-elems">Create project</div>
+            </a>
+        </div>
+        <div class="for-form">
+            <form method="GET">
+                <input type="text" name="search-area" value="{{ search_input }}">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="for-tasks">
+            {% for task in tasks %}
+                <div class="task-wrapper">
+                    <div class="options">{{ task.title }}</div>
+                    <div class="options"><a href="{% url 'todolist:task' task.id %}">View</a></div>
+                    <div class="options"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div>
+                    <div class="options"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div>
+                </div>
+            {% empty %}
+                <h3>No items</h3>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'todolist/base.html' %}
+
+{% block content %}
+    <h1>Project: {{ project.title }}</h1>
+    <h3>Description</h3>
+    <p>{{ project.description }}</p>
+    <h3>Tasks</h3>
+    {% for task in project.tasks %}
+        <ul>
+            <li>{{ task.title }}</li>
+        </ul>
+    {% empty %}
+        <h3>Currently project has not assigned task!</h3>
+    {% endfor %}
+
+{% endblock content %}
