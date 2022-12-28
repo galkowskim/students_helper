@@ -1,1 +1,1 @@
-#Students helper - app designed to help students
+# Students helper - app designed to help students
