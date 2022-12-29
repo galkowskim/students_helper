@@ -26,7 +26,22 @@ class ProjectDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(ProjectDetail, self).get_context_data(**kwargs)
         context['tasks'] = Task.objects.filter(project=self.object)
+        context['projects'] = Project.objects.filter(user=self.request.user)
         return context
+
+
+class ProjectUpdate(LoginRequiredMixin, UpdateView):
+    model = Project
+    fields = ['title', 'description']
+
+    def get_success_url(self):
+        return reverse_lazy('todolist:project', kwargs={'pk': self.object.pk})
+
+
+class ProjectDelete(LoginRequiredMixin, DeleteView):
+    model = Project
+    context_object_name = "project"
+    success_url = reverse_lazy('todolist:tasks')
 
 
 class MainPageToDoList(LoginRequiredMixin, ListView):

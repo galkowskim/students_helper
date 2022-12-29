@@ -1,11 +1,11 @@
 body {
-    background-color: darkslategray;
+    background-color: #1d3557;
 }
 
 .wrapper {
     width: 80%;
     margin: auto;
-    background-color: cadetblue;
+    background-color: #457b9d;
     padding: 2vh;
     height: 80vh;
     display: flex;
@@ -28,7 +28,7 @@ header {
     justify-content: space-between;
 }
 .user-info {
-    width: 60%;
+    width: 20%;
     text-align: right;
     margin-right: 3%;
     padding: 0.5%;
@@ -47,7 +47,7 @@ header {
 .sidepanel > a > div {
     margin-top: 10%;
     border-radius: 5%;
-    background-color: darkcyan;
+    background-color: #a8dadc;
     padding: 2%;
     text-align: center;
 }
@@ -55,12 +55,12 @@ header {
 .project-div {
     margin-top: 10%;
     border-radius: 5%;
-    background-color: #1d8082;
+    background-color: #a8dadc;
     padding: 2%;
 }
 
 .chosen {
-    background-color: orangered !important;
+    background-color: #e63946 !important;
 }
 
 .creation-wrapper {
@@ -78,7 +78,7 @@ header {
 
 .creation-elems {
     padding: 2%;
-    background-color: aliceblue;
+    background-color: #a8dadc;
     margin-right: 1%;
     border-radius: 0.3em;
     text-align: center;
@@ -103,16 +103,53 @@ header {
     /*width: 100%;*/
     margin-top: 2%;
     padding: 1.5%;
+    padding-left: 0;
 }
 
 .task-wrapper {
     display: flex;
+    background-color: #f1faee;
+    margin-top: 0.75%;
+    border-radius: 0.15em;
 }
 
 .options {
     text-align: center;
     flex: 1 1 0px;
-    margin-top: 1.5%;
+    padding: 0.6%;
     line-height: 5vh;
     vertical-align: center;
+}
+
+.option-links {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-size: 5vh;
+    vertical-align: center;
+}
+
+.project-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.options > div > a {
+    text-decoration: none;
+    color: black;
+}
+
+.option-wrap {
+    background-color: #e63946;
+    width: 50%;
+    margin: auto;
+    border-radius: 0.3em;
+}
+
+.separator {
+    height: 0.2em;
+    background-color: black;
+    margin-top: 10%;
 }

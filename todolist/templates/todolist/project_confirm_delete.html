@@ -4,7 +4,7 @@
     <a href="{% url 'todolist:tasks' %}">Go back</a>
     <form method="POST">
         {% csrf_token %}
-        <p>Are you sure you want to delete this task? "{{ task }}"</p>
+        <p>Are you sure you want to delete this project? <b>{{ project.title }}</b></p>
         <input type="submit" value="Delete"/>
     </form>
 {% endblock content %}

@@ -2,15 +2,15 @@
 
 {% block content %}
     <div class="sidepanel">
-        <a href="">
+        <a href="{% url 'todolist:tasks' %}">
             <div class="without-project chosen">Tasks without project</div>
         </a>
         {% if projects %}
+            <div class="separator"></div>
             <div class="project-div">Projects</div>
         {% endif %}
         {% for project in projects %}
-
-            <a href="">
+            <a href="{% url 'todolist:project' project.id %}">
                 <div class="project-wrapper">
                     {{ project.title }}
                 </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="page-wrapper">
         <header>
-            <h1>ToDoList</h1>
+            <h1>Tasks without assigned project</h1>
             <div class="user-info">
                 {% if request.user.is_authenticated %}
                     <div><p>{{ request.user }}</p></div>
@@ -49,9 +49,9 @@
             {% for task in tasks %}
                 <div class="task-wrapper">
                     <div class="options">{{ task.title }}</div>
-                    <div class="options"><a href="{% url 'todolist:task' task.id %}">View</a></div>
-                    <div class="options"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div>
-                    <div class="options"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div>
+                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task' task.id %}">View</a></div></div>
+                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
+                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
                 </div>
             {% empty %}
                 <h3>No items</h3>
