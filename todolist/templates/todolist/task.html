@@ -1,5 +1,15 @@
 {% extends 'todolist/base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>Task detail! {{ task }}</h1>
+    <link rel="stylesheet" href="{% static 'todolist/task_details.css' %}">
+
+    <div class="task-details">
+        <a href="{% url 'todolist:tasks' %}">Go back</a>
+        <h1>{{ task.title }}</h1>
+        <div>Content: {{ task.content }}</div>
+        <div>Added: {{ task.timestamp }}</div>
+    </div>
+
+
 {% endblock content %}

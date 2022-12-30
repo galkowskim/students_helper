@@ -1,11 +1,14 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block content %}
-    <h2><span>Available apps</span></h2>
-    <div class="containter">
-        <a href="todolist/"><div>To do list</div></a>
-        <div>...</div>
-        <div>...</div>
-        <div>...</div>
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
+    <header>
+        <h1><span>Available apps</span></h1>
+    </header>
+
+    <div class="container">
+        <a href="todolist/"><div class="squares">To do list</div></a>
+        <a href=""><div class="squares">Translator</div></a>
     </div>
 {% endblock content %}

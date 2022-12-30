@@ -3,20 +3,20 @@
 {% block content %}
     <div class="sidepanel">
         <a href="{% url 'todolist:tasks' %}">
-            <div class="without-project">Tasks without project</div>
+            <div class="without-project medium-font">Tasks without project</div>
         </a>
         {% if projects %}
             <div class="separator"></div>
-            <div class="project-div">Projects</div>
+            <div class="project-div medium-font">Projects</div>
         {% endif %}
         {% for project_in_list in projects %}
             <a href="{% url 'todolist:project' project_in_list.id %}">
                 {% if project.id == project_in_list.id %}
-                    <div class="project-wrapper chosen">
+                    <div class="project-wrapper chosen medium-font">
                         {{ project_in_list.title }}
                     </div>
                 {% else %}
-                    <div class="project-wrapper chosen">
+                    <div class="project-wrapper medium-font">
                         {{ project_in_list.title }}
                     </div>
                 {% endif %}
@@ -28,9 +28,9 @@
     <div class="page-wrapper">
         <header>
 
-            <div class="project-wrapper">
+            <div class="project-wrapper-details">
                 <div class="project-title"><h1>{{ project.title }}</h1></div>
-                <div class="description"><b>Description: </b>{{ project.description }}</div>
+                <div class="description medium-font"><b>Description: </b>{{ project.description }}</div>
             </div>
             <div class="user-info">
                 {% if request.user.is_authenticated %}
@@ -43,16 +43,16 @@
         </header>
         <div class="creation-wrapper">
             <a href="{% url 'todolist:task-create' %}">
-                <div class="creation-elems">Add task</div>
+                <div class="creation-elems medium-font">Add task</div>
             </a>
             <a href="{% url 'todolist:project-create' %}">
-                <div class="creation-elems">Create project</div>
+                <div class="creation-elems medium-font">Create project</div>
             </a>
             <a href="{% url 'todolist:project-update' project.id %}">
-                <div class="creation-elems">Update project</div>
+                <div class="creation-elems medium-font">Update project</div>
             </a>
             <a href="{% url 'todolist:project-delete' project.id %}">
-                <div class="creation-elems">Delete project</div>
+                <div class="creation-elems medium-font">Delete project</div>
             </a>
         </div>
         <div class="for-form">
@@ -64,10 +64,10 @@
         <div class="for-tasks">
             {% for task in tasks %}
                 <div class="task-wrapper">
-                    <div class="options">{{ task.title }}</div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task' task.id %}">View</a></div></div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
+                    <div class="options medium-font">{{ task.title }}</div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task' task.id %}">View</a></div></div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
                 </div>
             {% empty %}
                 <h3>Project currently has not assigned task!</h3>

@@ -1,0 +1,105 @@
+body {
+    background-color: #1d3557;
+}
+
+.wrapper {
+    width: 80%;
+    margin: auto;
+    background-color: #457b9d;
+    padding: 2vh;
+    height: 80vh;
+    display: flex;
+    flex: 0 0 auto;
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    border-radius: 0.5em;
+}
+
+.login-wrapper {
+    width: 70%;
+    margin: auto;
+    background-color: #1d3557;
+    border-radius: 0.8em;
+    height: 66%;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+}
+
+form {
+    font-size: 1.5em;
+    margin-left: 32%;
+    margin-bottom: 2%;
+}
+
+.login-wrapper > a {
+    margin-left: 32%;
+    margin-top: 5%;
+    color: white;
+    font-size: 1.2em;
+}
+
+.login-wrapper > form > p > label {
+    color: white;
+}
+
+form > p > input[type=text], input[type=password] {
+    border-radius: 1.1em;
+    padding: 2%;
+}
+
+form > input[type=submit] {
+    width: 3.5em;
+    margin-top: 0.5%;
+    height: 1.3em;
+    font-size: 1.1em;
+    border-radius: 1em;
+    background-color: #e63946;
+    padding: 0.5%;
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+form > input[type=submit]:hover {
+    -webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}
+
+
+.no-account {
+    margin-left: 32%;
+    color: white;
+    font-size: 1.2em;
+}
+
+.no-account > a {
+    font-size: 1.3em;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+}
+
+.email-sent {
+    text-align: justify;
+    color: white;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.login-href > a{
+    font-size: 1.3em;
+    color: white;
+    margin-left: 30%;
+}
+
+.new-pass {
+    color: white;
+    margin-left: 20%;
+}
+

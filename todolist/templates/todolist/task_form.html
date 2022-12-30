@@ -1,11 +1,18 @@
 {% extends 'todolist/base.html' %}
+{% load static %}
+
 
 {% block content %}
-    <h3>Task form</h3>
-    <a href="{% url 'todolist:tasks' %}">Go back</a>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
+    <link rel="stylesheet" href="{% static 'todolist/style_form.css' %}">
+
+    <div class="task-form-wrapper">
+        <h3>Task form</h3>
+        <a href="{% url 'todolist:tasks' %}">Go back</a>
+        <div class="form-div"></divclass>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 {% endblock content %}

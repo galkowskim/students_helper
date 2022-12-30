@@ -3,15 +3,15 @@
 {% block content %}
     <div class="sidepanel">
         <a href="{% url 'todolist:tasks' %}">
-            <div class="without-project chosen">Tasks without project</div>
+            <div class="without-project chosen medium-font">Tasks without project</div>
         </a>
         {% if projects %}
             <div class="separator"></div>
-            <div class="project-div">Projects</div>
+            <div class="project-div medium-font">Projects</div>
         {% endif %}
         {% for project in projects %}
             <a href="{% url 'todolist:project' project.id %}">
-                <div class="project-wrapper">
+                <div class="project-wrapper medium-font">
                     {{ project.title }}
                 </div>
             </a>
@@ -33,10 +33,10 @@
         </header>
         <div class="creation-wrapper">
             <a href="{% url 'todolist:task-create' %}">
-                <div class="creation-elems">Add task</div>
+                <div class="creation-elems medium-font">Add task</div>
             </a>
             <a href="{% url 'todolist:project-create' %}">
-                <div class="creation-elems">Create project</div>
+                <div class="creation-elems medium-font">Create project</div>
             </a>
         </div>
         <div class="for-form">
@@ -48,10 +48,10 @@
         <div class="for-tasks">
             {% for task in tasks %}
                 <div class="task-wrapper">
-                    <div class="options">{{ task.title }}</div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task' task.id %}">View</a></div></div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
-                    <div class="options"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
+                    <div class="options medium-font">{{ task.title }}</div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task' task.id %}">View</a></div></div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
+                    <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
                 </div>
             {% empty %}
                 <h3>No items</h3>

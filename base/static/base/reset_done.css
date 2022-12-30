@@ -1,0 +1,10 @@
+.login-wrapper > p {
+    margin-left: 15%;
+    font-size: 1.2em;
+    color: white;
+}
+
+.login-wrapper {
+    height: auto;
+    padding: 2.5%;
+}

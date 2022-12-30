@@ -1,0 +1,89 @@
+.task-form-wrapper {
+    width: 80%;
+    margin: auto;
+    background-color: #1d3557;
+    border-radius: 0.8em;
+}
+
+h3 {
+    text-align: center;
+    font-size: 6vh;
+    color: white;
+}
+
+.task-form-wrapper > a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    margin-left: 5%;
+}
+
+.form-div {
+    margin: auto;
+    width: 80%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+}
+
+input {
+    margin: auto;
+}
+
+form > p > label {
+    font-size: 1.5em;
+    color: white;
+    width: 40%;
+}
+
+form > p > textarea {
+    border-radius: 1em;
+    background-color: #457B9D;
+    padding: 2%;
+    height: 7vh;
+    width: 23vw;
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    resize: none;
+}
+
+form > p > input[type=text] {
+    border-radius: 1em;
+    background-color: #457B9D;
+    height: 3vh;
+    padding: 1.5%;
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+form > p > input[type=checkbox] {
+    accent-color: #457B9D;
+    width: 2em;
+    height: 2em;
+}
+
+form > p > select {
+    background-color: #457B9D;
+    border: 0;
+    border-radius: 1em;
+    width: 7em;
+    height: 2em;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+form > input[type=submit] {
+    width: 7em;
+    margin-top: 0.5%;
+    height: 2em;
+    font-size: 1.1em;
+    border-radius: 1em;
+    background-color: #e63946;
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+form > input[type=submit]:hover {
+    -webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}

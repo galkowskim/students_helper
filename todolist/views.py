@@ -85,9 +85,13 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = '__all__'
+    fields = ['title', 'content', 'status_of_completion', 'project']
     success_url = reverse_lazy('todolist:tasks')
 
+    def get_form(self, *args, **kwargs):
+        form = super(TaskUpdate, self).get_form(*args, **kwargs)
+        form.fields['project'].queryset = Project.objects.filter(user=self.request.user)
+        return form
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
