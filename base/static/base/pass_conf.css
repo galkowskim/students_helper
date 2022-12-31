@@ -1,0 +1,25 @@
+form {
+    font-size: 1.15em;
+    margin-left: 20%;
+    color: white;
+}
+
+.login-wrapper {
+  height: 80%;
+}
+
+form > button {
+    width: auto;
+    margin-top: 1.5%;
+    height: 2em;
+    font-size: 1.1em;
+    border-radius: 1em;
+    background-color: #e63946;
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+form > button:hover {
+    -webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}

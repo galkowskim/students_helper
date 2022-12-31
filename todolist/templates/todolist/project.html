@@ -3,17 +3,23 @@
 {% block content %}
     <div class="sidepanel">
         <a href="{% url 'todolist:tasks' %}">
-            <div class="without-project chosen medium-font">Tasks without project</div>
+            <div class="without-project medium-font">Tasks without project</div>
         </a>
         {% if projects %}
             <div class="separator"></div>
             <div class="project-div medium-font">Projects</div>
         {% endif %}
-        {% for project in projects %}
-            <a href="{% url 'todolist:project' project.id %}">
-                <div class="project-wrapper medium-font">
-                    {{ project.title }}
-                </div>
+        {% for project_in_list in projects %}
+            <a href="{% url 'todolist:project' project_in_list.id %}">
+                {% if project.id == project_in_list.id %}
+                    <div class="project-wrapper chosen medium-font">
+                        {{ project_in_list.title }}
+                    </div>
+                {% else %}
+                    <div class="project-wrapper medium-font">
+                        {{ project_in_list.title }}
+                    </div>
+                {% endif %}
             </a>
         {% empty %}
             <span>You haven't created any projects yet!</span>
@@ -21,7 +27,11 @@
     </div>
     <div class="page-wrapper">
         <header>
-            <h1>Tasks without assigned project</h1>
+
+            <div class="project-wrapper-details">
+                <div class="project-title"><h1>{{ project.title }}</h1></div>
+                <div class="description medium-font"><b>Description: </b>{{ project.description }}</div>
+            </div>
             <div class="user-info">
                 {% if request.user.is_authenticated %}
                     <div><p>{{ request.user }}</p></div>
@@ -37,6 +47,12 @@
             </a>
             <a href="{% url 'todolist:project-create' %}">
                 <div class="creation-elems medium-font">Create project</div>
+            </a>
+            <a href="{% url 'todolist:project-update' project.id %}">
+                <div class="creation-elems medium-font">Update project</div>
+            </a>
+            <a href="{% url 'todolist:project-delete' project.id %}">
+                <div class="creation-elems medium-font">Delete project</div>
             </a>
         </div>
         <div class="for-form">
@@ -54,7 +70,7 @@
                     <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
                 </div>
             {% empty %}
-                <h3>No items</h3>
+                <h3>Project currently has not assigned task!</h3>
             {% endfor %}
         </div>
     </div>

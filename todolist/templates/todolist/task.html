@@ -1,13 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Task detail! {{ task }}</h1>
-</body>
-</html>
+{% extends 'todolist/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'todolist/task_details.css' %}">
+
+    <div class="task-details">
+        <a href="{% url 'todolist:tasks' %}">Go back</a>
+        <h1>{{ task.title }}</h1>
+        <div>Content: {{ task.content }}</div>
+        <div>Added: {{ task.timestamp }}</div>
+    </div>
+
+
+{% endblock content %}
