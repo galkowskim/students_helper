@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'base/main.css' %}">
+    <link rel="stylesheet" href="{% static 'base/main2.css' %}">
     <header>
+        <div><a href="{% url 'base:logout' %}">Logout</a></div>
         <h1><span>Available apps</span></h1>
     </header>
 

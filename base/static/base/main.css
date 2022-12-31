@@ -1,4 +1,4 @@
-header {
+h1 {
     width: 90%;
     margin: auto;
     padding: 3%;
@@ -43,4 +43,14 @@ header {
 
 .squares:hover {
     transform: translateX(3px) translateY(-3px);
+}
+
+header {
+    position: relative;
+}
+
+header > div {
+    position: absolute;
+    top: 5%;
+    left: 10%;
 }
