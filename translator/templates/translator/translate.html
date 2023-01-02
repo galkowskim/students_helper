@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translate app</title>
+    <link rel="stylesheet" href="{% static 'translator/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="logout-div">
+        <a href="{% url 'base:logout' %}">Logout</a>
+        <a href="{% url 'base:main' %}">Go to apps</a>
+    </div>
+    <h1>Translate your text</h1>
+    <div class="form-div">
+        <form method="POST" action="{% url 'translator:translate' %}">
+            {% csrf_token %}
+                <div>
+                <textarea type="text" name="txt" class="form-control" placeholder="Enter Your Text" rows="5"
+                          required="required"></textarea>
+                </div>
+                <div class="col">
+                    <select id="inputState" class="form-control" name="lang">
+                        <option selected value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="pl">Polish</option>
+                    </select>
+                </div>
+            <button type="submit">Translate</button>
+        </form>
+    </div>
+    {% if result %}
+        <div class="translation">Translation: {{ result }}</div>
+    {% endif %}
+</div>
+</body>
+</html>

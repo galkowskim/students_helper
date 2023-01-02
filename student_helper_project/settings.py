@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todolist.apps.TodolistConfig',
     'base.apps.BaseConfig',
+    'translator.apps.TranslatorConfig',
     'crispy_forms',
 ]
 
