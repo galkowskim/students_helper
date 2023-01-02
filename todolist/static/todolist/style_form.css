@@ -1,3 +1,7 @@
+.body {
+    font-family: 'Lato', sans-serif;
+}
+
 .task-form-wrapper {
     width: 80%;
     margin: auto;
