@@ -182,3 +182,7 @@ h1 {
 .task-form-wrapper {
     background-color: purple;
 }
+
+.user-info > div > a {
+    color: white;
+}
