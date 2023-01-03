@@ -124,4 +124,3 @@ def test_no_projects():
     assertTemplateUsed(response, "todolist/task_list.html")
     assert response.context['projects'].count() == 0
     assertQuerysetEqual(response.context['projects'], [])
-    assert 1 == 2
