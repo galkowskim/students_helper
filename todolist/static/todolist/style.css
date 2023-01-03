@@ -112,6 +112,21 @@ header {
     margin-top: 2%;
     padding: 1.5%;
     padding-left: 0;
+    overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 1em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d3557;
+  border-radius: 1em;
 }
 
 .task-wrapper {
@@ -127,6 +142,7 @@ header {
     padding: 0.6%;
     line-height: 5vh;
     vertical-align: center;
+    margin: auto;
 }
 
 .option-links {
@@ -185,4 +201,16 @@ h1 {
 
 .user-info > div > a {
     color: white;
+}
+
+.medium-color {
+    background-color: orange;
+}
+
+.high-color {
+    background-color: firebrick;
+}
+
+.low-color {
+    background-color: mediumseagreen;
 }

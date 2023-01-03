@@ -50,7 +50,7 @@ class MainPageToDoList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = context['tasks'].filter(user=self.request.user, project=None)
+        context['tasks'] = Task.objects.filter(user=self.request.user, project=None).order_by('priority_level')
         context['projects'] = Project.objects.filter(user=self.request.user)
         context['count'] = context['tasks'].filter(status_of_completion=False).count()
 
@@ -70,7 +70,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'content', 'status_of_completion', 'project']
+    fields = ['title', 'content', 'status_of_completion', 'project', 'priority_level']
     success_url = reverse_lazy('todolist:tasks')
 
     def form_valid(self, form):

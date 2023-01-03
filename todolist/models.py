@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -19,8 +20,19 @@ class Task(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True)
 
+    class ProrityLevels(models.TextChoices):
+        LOW = "C", _('Low')
+        MEDIUM = "B", _("Medium")
+        HIGH = 'A', _("High")
+
+    priority_level = models.CharField(
+        max_length=1,
+        choices=ProrityLevels.choices,
+        default=ProrityLevels.MEDIUM,
+    )
+
     def __str__(self):
         return self.title
 
     class Meta:
-        order_with_respect_to = 'status_of_completion'
+        order_with_respect_to = 'priority_level'
