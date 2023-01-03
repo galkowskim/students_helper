@@ -13,7 +13,7 @@ class Project(models.Model):
 
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, null=False)
     content = models.TextField(null=True, blank=True)
     status_of_completion = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
