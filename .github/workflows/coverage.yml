@@ -45,6 +45,7 @@ jobs:
       #----------------------------------------------
       - name: Install library
         run: poetry install --no-interaction
+      #
       #----------------------------------------------
       #    run test suite and output coverage file
       #----------------------------------------------
