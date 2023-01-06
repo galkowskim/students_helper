@@ -8,11 +8,11 @@ body {
     margin: auto;
     background-color: #457b9d;
     padding: 2vh;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     flex: 0 0 auto;
     position: absolute;
-    top: 8%;
+    top: 4%;
     left: 10%;
     border-radius: 0.5em;
 }
@@ -22,7 +22,7 @@ body {
     margin: auto;
     background-color: #1d3557;
     border-radius: 0.8em;
-    height: 66%;
+    height: auto;
     position: relative;
 }
 
@@ -105,3 +105,7 @@ form > input[type=submit]:hover {
     margin-left: 20%;
 }
 
+h3 {
+    text-align: center;
+    color: white;
+}

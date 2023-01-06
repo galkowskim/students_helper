@@ -1,21 +1,24 @@
-from django.contrib.auth import login
+from django.contrib import messages
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView, PasswordResetConfirmView
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
 from django.core.mail import send_mail, BadHeaderError
 from django.db.models.query_utils import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
 
-from .forms import CustomUserCreationForm
+from .decorators import user_not_authenticated
+from .forms import UserRegistrationForm
+from .tokens import account_activation_token
 
 
 class MainPageView(LoginRequiredMixin, TemplateView):
@@ -30,23 +33,45 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy('base:main')
 
+    def get_context_data(self, **kwargs):
+        context = super(CustomLoginView, self).get_context_data()
 
-class RegisterView(FormView):
-    template_name = "base/register.html"
-    form_class = CustomUserCreationForm
-    redirect_authenticated_user = True
-    success_url = reverse_lazy('todolist:tasks')
+        if 'email_confirmed' in self.request.session:
+            context['email_confirmed'] = self.request.session['email_confirmed']
+            del self.request.session['email_confirmed']
+        return context
 
-    def form_valid(self, form):
-        user = form.save()
-        if user is not None:
-            login(self.request, user)
-        return super(RegisterView, self).form_valid(form)
 
-    def get(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect('todolist:tasks')
-        return super(RegisterView, self).get(*args, **kwargs)
+def confirm_email(request):
+    return render(
+        request=request,
+        template_name="base/confirm_email.html",
+    )
+
+
+@user_not_authenticated
+def register(request):
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+            activateEmail(request, user, form.cleaned_data.get('email'))
+            return redirect('base:confirm_email')
+
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+
+    else:
+        form = UserRegistrationForm()
+
+    return render(
+        request=request,
+        template_name="base/register.html",
+        context={"form": form}
+    )
 
 
 def password_reset_request(request):
@@ -81,3 +106,45 @@ def password_reset_request(request):
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     success_url = reverse_lazy("base:password_reset_complete")
+
+
+def activateEmail(request, user, to_email):
+    mail_subject = 'Activate your user account.'
+    message = render_to_string('base/template_activate_account.html', {
+        'user': user.username,
+        'domain': get_current_site(request).domain,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+        'protocol': 'https' if request.is_secure() else 'http'
+    })
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    if email.send():
+
+        return redirect('base.html')
+        messages.success(request, f'Dear <b>{user}</b>, please go to you email <b>{to_email}</b> inbox and click on \
+            received activation link to confirm and complete the registration. <b>Note:</b> Check your spam folder.')
+    else:
+        messages.error(request, f'Problem sending confirmation email to {to_email}, check if you typed it correctly.')
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    print(user)
+    print(account_activation_token.check_token(user, token))
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        request.session['email_confirmed'] = 'Thank you for your email confirmation. Now you can login into your ' \
+                                             'account.'
+        return redirect('base:login')
+    else:
+        messages.error(request, 'Activation link is invalid!')
+
+    return redirect('base:main')
