@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import MainPageToDoList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, ProjectCreate, ProjectDetail, ProjectUpdate, ProjectDelete
+from .views import MainPageToDoList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, ProjectCreate, ProjectDetail, \
+    ProjectUpdate, ProjectDelete
 
 urlpatterns = [
     path('', MainPageToDoList.as_view(), name='tasks'),
