@@ -21,7 +21,7 @@ form > input[type=submit] {
     width: auto;
     padding: 1%;
     height: auto;
-    margin-top: 0;
+    margin-top: 2%;
 }
 
 .account {
@@ -30,4 +30,26 @@ form > input[type=submit] {
 
 .account > a {
     color: white;
+}
+
+#error_1_id_username, #error_1_id_email {
+    color: red;
+}
+
+#hint_id_email, #hint_id_password2 {
+    display: none;
+}
+
+input[type=text], input[type=email] {
+    border-radius: 1.1em;
+    padding: 2%;
+    height: 1vh;
+}
+
+input[type=password] {
+    height: 0.5vh;
+}
+
+.controls {
+    display: flex;
 }
