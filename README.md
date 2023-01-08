@@ -3,7 +3,7 @@
 ### Author: [@galkowskim](https://github.com/galkowskim)
 
 ## Introduction
-This is a Django application that provides a ToDoList and a Translator. The application is built using the Poetry package manager, and the necessary files (`poetry.lock` and `pyproject.toml`) are included in the repository.
+This is a Django application that provides a ToDoList and a Translator. The application is built using the `Poetry` package manager, and the necessary files (`poetry.lock` and `pyproject.toml`) are included in the repository.
 
 ## Installation
 To install the application, follow these steps:
