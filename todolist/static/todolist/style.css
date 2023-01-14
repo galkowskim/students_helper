@@ -37,7 +37,7 @@ header {
 }
 
 .sidepanel {
-    padding: 0.5vh;
+    padding: 0.8vh;
     margin-right: 3%;
 }
 
@@ -96,15 +96,24 @@ header {
 .for-form > form > input[type=text] {
     border-radius: 0.6em;
     padding: 0.3em;
-    height: 3.5vh;
-    border: 0;
+    height: 5vh;
+    font-size: 1.5em;
 }
 
 .for-form > form > input[type=submit] {
+    display: inline-block;
     border: 0.1em solid black;
     border-radius: 0.2em;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    font-size: 3vh;
+    font-size: 1.5em;
+    padding: 1.5%;
+    /*height: 5vh;*/
+    margin-left: 1%;
+}
+
+.for-form > form > input[type=submit]:hover {
+    -webkit-transform: translateY(2px);
+	transform: translateY(2px);
 }
 
 .for-tasks {
@@ -213,4 +222,9 @@ h1 {
 
 .low-color {
     background-color: mediumseagreen;
+}
+
+.no-projects {
+    margin-top: 7%;
+    font-size: 1.4em;
 }
