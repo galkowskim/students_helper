@@ -1,0 +1,61 @@
+.profile-form-wrapper, .password-change-wrapper {
+    height: max-content;
+    width: 80%;
+    background-color: #457b9d;
+    padding: 2vh;
+    margin: auto;
+    color: white;
+}
+
+form {
+    margin: auto;
+    font-size: 3vh;
+    height: 100%;
+}
+
+h3 {
+    font-size: 4vh !important;
+}
+
+.back-button {
+    color:white;
+}
+
+.back {
+    margin-bottom: 5%;
+}
+
+p > span {
+    display: none;
+}
+
+input[type=text], input[type=email] {
+    height: 2vh !important;
+    font-size: 2vh !important;
+    border-radius: 5px !important;
+    padding: 1% !important;
+}
+
+input[type=submit] {
+    font-size: 1.8vh;
+    height: auto !important;
+    padding: 2% !important;
+    width: auto !important;
+}
+
+ul {
+    display: none;
+}
+
+#div_id_new_password1 {
+    margin-top: 3.3%;
+}
+
+#div_id_new_password2 {
+    margin-bottom: 1.3%;
+}
+
+.help-block {
+    font-size: 2.2vh;
+    color: firebrick;
+}
