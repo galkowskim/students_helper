@@ -1,9 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.views import LoginView, PasswordResetConfirmView
+from django.contrib.auth.views import LoginView, PasswordResetConfirmView, PasswordChangeView
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail, BadHeaderError
@@ -14,11 +14,13 @@ from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
+from django.contrib.auth.decorators import login_required
 
 from .decorators import user_not_authenticated
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, CustomUserChangeForm
 from .tokens import account_activation_token
+from .models import CustomUser
 
 
 class MainPageView(LoginRequiredMixin, TemplateView):
@@ -79,7 +81,7 @@ def password_reset_request(request):
         password_reset_form = PasswordResetForm(request.POST)
         if password_reset_form.is_valid():
             data = password_reset_form.cleaned_data['email']
-            associated_users = User.objects.filter(Q(email=data))
+            associated_users = CustomUser.objects.filter(Q(email=data))
             if associated_users.exists():
                 for user in associated_users:
                     subject = "Password Reset Requested"
@@ -130,8 +132,8 @@ def activateEmail(request, user, to_email):
 def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = CustomUser.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
 
     print(user)
@@ -148,3 +150,33 @@ def activate(request, uidb64, token):
         messages.error(request, 'Activation link is invalid!')
 
     return redirect('base:main')
+
+
+class ProfileUpdateView(UpdateView):
+    model = CustomUser
+    form_class = CustomUserChangeForm
+    template_name = 'base/user_update.html'
+
+    def form_valid(self, form):
+        user = form.save(commit=True)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user.set_username(username)
+        user.set_password(password)
+        user.save()
+        return redirect('todolist:tasks')
+
+    def get_object(self, *args, **kwargs):
+        model_instance = CustomUser.objects.get(pk=self.request.user.pk)
+        username = model_instance.username
+        user = CustomUser.objects.get(username=username)
+        return user
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = "base/password/password_change.html"
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('todolist:tasks')

@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todolist.apps.TodolistConfig',
     'base.apps.BaseConfig',
+    'todolist.apps.TodolistConfig',
     'translator.apps.TranslatorConfig',
     'crispy_forms',
 ]
@@ -128,3 +128,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+AUTH_USER_MODEL = 'base.CustomUser'

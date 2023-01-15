@@ -1,10 +1,11 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
+from base.models import CustomUser
 from django.db import models
 
 
 class Project(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
 
@@ -13,7 +14,7 @@ class Project(models.Model):
 
 
 class Task(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200, null=False)
     content = models.TextField(null=True, blank=True)
     status_of_completion = models.BooleanField(default=False)
