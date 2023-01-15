@@ -5,7 +5,7 @@ from django.urls import reverse
 from pytest_django.asserts import *
 
 from .models import Task, Project
-
+from base.models import CustomUser
 
 def initialize_client():
     client = Client()
@@ -14,7 +14,7 @@ def initialize_client():
 
 
 def create_user():
-    user = User.objects.create_user(
+    user = CustomUser.objects.create_user(
         username="testUser",
         password="testPassword",
     )
