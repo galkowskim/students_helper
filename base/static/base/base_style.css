@@ -8,7 +8,8 @@ body {
     margin: auto;
     background-color: #457b9d;
     padding: 2vh;
-    height: 85vh;
+    /*height: 85vh;*/
+    height: auto;
     display: flex;
     flex: 0 0 auto;
     position: absolute;
