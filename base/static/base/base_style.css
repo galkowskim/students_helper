@@ -30,12 +30,12 @@ body {
 h1 {
     text-align: center;
     color: white;
-    font-size: 2.5em;
+    font-size: 4.8vh;
     font-family: 'Lato', sans-serif;
 }
 
 form {
-    font-size: 1.5em;
+    font-size: 2.85vh;
     margin-left: 32%;
     margin-bottom: 2%;
 }
@@ -44,7 +44,7 @@ form {
     margin-left: 32%;
     margin-top: 5%;
     color: white;
-    font-size: 1.2em;
+    font-size: 2.5vh;
 }
 
 .login-wrapper > form > p > label {
@@ -60,7 +60,7 @@ form > input[type=submit] {
     width: 3.5em;
     margin-top: 0.5%;
     height: 1.3em;
-    font-size: 1.1em;
+    font-size: 3vh;
     border-radius: 1em;
     background-color: #e63946;
     padding: 0.5%;
@@ -76,11 +76,11 @@ form > input[type=submit]:hover {
 .no-account {
     margin-left: 32%;
     color: white;
-    font-size: 1.2em;
+    font-size: 2.5vh;
 }
 
 .no-account > a {
-    font-size: 1.3em;
+    font-size: 2.7vh;
     text-decoration: none;
     font-weight: bold;
     color: white;
@@ -96,7 +96,7 @@ form > input[type=submit]:hover {
 }
 
 .login-href > a{
-    font-size: 1.3em;
+    font-size: 2.7vh;
     color: white;
     margin-left: 30%;
 }
@@ -113,7 +113,7 @@ h3 {
 
 .errorlist {
     color: red;
-    font-size: 0.8em;
+    font-size: 1.6vh;
     margin: 0;
     padding: 0;
     width: 65%;

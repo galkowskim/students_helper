@@ -13,7 +13,7 @@
 }
 
 form > p {
-    font-size: 2.2em;
+    font-size: 4.4vh;
     text-align: center;
 }
 
@@ -23,14 +23,14 @@ a {
     padding: 2%;
     margin-left: 1.5%;
     margin-top: 3%;
-    font-size: 1.5em;
+    font-size: 3vh;
 }
 
 input[type=submit] {
     width: 7em;
     margin-top: 0.5%;
     height: 2em;
-    font-size: 1.1em;
+    font-size: 2.2vh;
     border-radius: 1em;
     background-color: #e63946;
     border: 0;

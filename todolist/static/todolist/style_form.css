@@ -18,7 +18,7 @@ h3 {
 .task-form-wrapper > a {
     text-decoration: none;
     color: #fff;
-    font-size: 2em;
+    font-size: 4vh;
     margin-left: 5%;
 }
 
@@ -34,7 +34,7 @@ input {
 }
 
 form > p > label {
-    font-size: 1.5em;
+    font-size: 3vh;
     color: white;
     width: 40%;
 }
@@ -73,14 +73,14 @@ form > p > select {
     height: 2em;
     color: white;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 2vh;
 }
 
 form > input[type=submit] {
     width: 7em;
     margin-top: 0.5%;
     height: 2em;
-    font-size: 1.1em;
+    font-size: 2.2vh;
     border-radius: 1em;
     background-color: #e63946;
     border: 0;

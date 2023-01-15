@@ -4,7 +4,7 @@ body {
 
 form {
     margin-left: 10%;
-    font-size: 1.1em;
+    font-size: 2.2vh;
 }
 
 form > p > input[type=email] {
