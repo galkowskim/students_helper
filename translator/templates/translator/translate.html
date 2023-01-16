@@ -10,6 +10,7 @@
 <body>
 <div class="container">
     <div class="logout-div">
+        <a href="{% url 'base:profile_update' %}">Update profile</a>
         <a href="{% url 'base:logout' %}">Logout</a>
         <a href="{% url 'base:main' %}">Go to apps</a>
     </div>
@@ -17,7 +18,7 @@
     <div class="form-div">
         <form method="POST" action="{% url 'translator:translate' %}">
             {% csrf_token %}
-                <div>
+                <div class="textarea-wrapper">
                 <textarea type="text" name="txt" class="form-control" placeholder="Enter Your Text" rows="5"
                           required="required"></textarea>
                 </div>

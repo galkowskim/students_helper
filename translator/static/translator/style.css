@@ -8,7 +8,7 @@ body {
     margin: auto;
     background-color: #457b9d;
     padding: 2vh;
-    height: 80vh;
+    height: min-content;
     /*display: flex;*/
     /*flex: 0 0 auto;*/
     position: absolute;
@@ -19,12 +19,10 @@ body {
 
 .logout-div {
     position: relative;
-    top: 13%;
-    left: 8%;
 }
 
 .logout-div > a {
-    font-size: 1.3em;
+    font-size: 1.3rem;
     color: white;
     margin-left: 1.5%;
 }
@@ -41,10 +39,9 @@ h1 {
 }
 
 .form-div {
-    /*width: 80%;*/
     margin-bottom: 5%;
     margin-left: 33%;
-    margin-top: 7%;
+    margin-top: 4%;
 }
 
 form > div > textarea {
@@ -63,6 +60,10 @@ textarea::placeholder {
     color: whitesmoke;
 }
 
+div > textarea {
+    font-size: 1rem;
+}
+
 form > div > select {
     background-color: #457B9D;
     border: 0;
@@ -71,7 +72,7 @@ form > div > select {
     height: 2em;
     color: white;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1rem;
     margin-top: 2%;
 }
 
@@ -79,7 +80,7 @@ form > button {
     width: 7em;
     margin-top: 1%;
     height: 2em;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     border-radius: 1em;
     background-color: #e63946;
     border: 0;
@@ -94,5 +95,11 @@ form > button:hover {
 .translation {
     margin-left: 10%;
     color: white;
-    font-size: 1.2em;
+    font-size: 2.4vh;
+    margin-bottom: 1.5%;
+}
+
+.form-control {
+    min-width: 30vw;
+    min-height: 15vh;
 }
