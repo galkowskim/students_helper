@@ -36,7 +36,9 @@
             <div class="user-info">
                 {% if request.user.is_authenticated %}
                     <div><p>{{ request.user }}</p></div>
+                    <div><a href="{% url 'base:profile_update' %}">Update profile</a></div>
                     <div><a href="{% url 'base:logout' %}">Logout</a></div>
+                    <div class="apps-href"><a href="{% url 'base:main' %}">Go to apps</a></div>
                 {% else %}
                     <a href="{% url 'base:login' %}">Login</a>
                 {% endif %}
