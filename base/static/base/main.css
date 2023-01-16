@@ -24,8 +24,10 @@ h1 {
 
 .wrapper {
     display: block;
-    height: auto;
-    padding-bottom: 3%;
+    height: min-content;
+    padding-bottom: 4%;
+    min-height: min-content !important;
+    vertical-align:middle !important;
 }
 
 .squares {
