@@ -1,6 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView, PasswordResetConfirmView, PasswordChangeView
@@ -15,12 +14,11 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import TemplateView, UpdateView
-from django.contrib.auth.decorators import login_required
 
 from .decorators import user_not_authenticated
 from .forms import UserRegistrationForm, CustomUserChangeForm
-from .tokens import account_activation_token
 from .models import CustomUser
+from .tokens import account_activation_token
 
 
 class MainPageView(LoginRequiredMixin, TemplateView):
@@ -156,21 +154,10 @@ class ProfileUpdateView(UpdateView):
     model = CustomUser
     form_class = CustomUserChangeForm
     template_name = 'base/user_update.html'
-
-    def form_valid(self, form):
-        user = form.save(commit=True)
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user.set_username(username)
-        user.set_password(password)
-        user.save()
-        return redirect('todolist:tasks')
+    success_url = reverse_lazy('todolist:tasks')
 
     def get_object(self, *args, **kwargs):
-        model_instance = CustomUser.objects.get(pk=self.request.user.pk)
-        username = model_instance.username
-        user = CustomUser.objects.get(username=username)
-        return user
+        return self.request.user
 
 
 class CustomPasswordChangeView(PasswordChangeView):
