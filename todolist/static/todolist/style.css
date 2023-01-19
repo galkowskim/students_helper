@@ -177,9 +177,15 @@ h1 {
 
 .option-wrap {
     background-color: #e63946;
-    width: 50%;
+    /*width: 50%;*/
     margin: auto;
     border-radius: 0.3em;
+    width: min-content !important;
+    padding: 2%;
+}
+
+.priority {
+    width: 50% !important;
 }
 
 .separator {

@@ -57,11 +57,11 @@
                     <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-update' task.id %}">Edit</a></div></div>
                     <div class="options medium-font"><div class="option-wrap"><a href="{% url 'todolist:task-delete' task.id %}">Delete</a></div></div>
                     {% if task.priority_level == "B" %}
-                        <div class="options medium-font"><div class="option-wrap medium-color">&nbsp;</div></div>
+                        <div class="options medium-font"><div class="option-wrap priority medium-color">&nbsp;</div></div>
                     {% elif task.priority_level == "A" %}
-                        <div class="options medium-font"><div class="option-wrap high-color">&nbsp;</div></div>
+                        <div class="options medium-font"><div class="option-wrap priority high-color">&nbsp;</div></div>
                     {% else %}
-                        <div class="options medium-font"><div class="option-wrap low-color">&nbsp;</div></div>
+                        <div class="options medium-font"><div class="option-wrap priority low-color">&nbsp;</div></div>
                     {% endif %}
                 </div>
             {% empty %}
