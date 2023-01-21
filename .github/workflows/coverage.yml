@@ -52,8 +52,6 @@ jobs:
       #    run test suite and output coverage file
       #----------------------------------------------
       - name: Test with pytest
-        env:
-        SECRET_KEY: ${{ secrets.STUDENTS_HELPER_SECRET_KEY }}
         run: poetry run pytest --cov=/home/runner/work/students_helper/students_helper/ --cov-report=xml
       #----------------------------------------------
       #             upload coverage stats
